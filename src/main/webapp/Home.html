@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html style="background-color:bisque; white-space: nowrap; overflow: auto;">
+<head>
+<link rel="stylesheet" type="text/css" media="all" href="/TIW_E-CommerceApp_RIA/CSS/mystyle.css" />
+<meta charset="UTF-8">
+<title>E-COMMERCE_APP</title>
+<script src="makeCall.js" charset="utf-8" defer></script>
+<script src="HomeManagement.js" charset="utf-8" defer></script>
+<script src="logout.js" charset="utf-8" defer></script>
+</head>
+<body>
+	<div class="logout clickable" id ="logout">LOGOUT</div>
+	<h1 id="welcomeMessage" style="position:absolute;top:25px;left:5px">Welcome back <span id="name"></span></h1>
+	<table id="shortcutMenu" style="position:absolute;top:100px;left:5px;border-collapse:collapse" border = "1">
+		<tr>
+			<td class="cell clickable" id="home">HOME</td>
+			<td class="cell clickable" id="cart">CART</td>
+			<td class="cell clickable" id="orders">ORDERS</td>
+		</tr>
+	</table>
+	<form id ="keywordField" style="position:absolute;top:160px;left:10px;border:0;padding:0">
+    	Enter keyword: <input id="keywordInput" type="text" name="keyword" required>
+	</form>
+	<h2 id="itemsMessage" style="position:absolute;top:180px;left:10px">List of your last visualized items</h2>
+	<table id="visualizedItemsTable" style="position:absolute;top:250px;left:10px;border-collapse:collapse" border = "1">
+		<tr class="subTitle">
+			<th class="cell">ID</th>
+			<th class="cell">Name</th>
+			<th class="cell">Price</th>
+		</tr>
+		<tbody id="visualizedItemsBody"/>
+	</table>
+	<h2 id="resultMessage" style="visibility:hidden;position:absolute;top:120px;left:10px"><span id="n_results"></span> results for keyword <span id="keyword"></span></h2>
+	<fieldset id="resultsField" style="padding:0;border:0;visibility:hidden;position:absolute;top:185px;left:10px;">
+		<fieldset id="searchedItemsField" style="float:left;padding:0;border:0">
+			<table id="searchedItemsTable" style="border-collapse:collapse;float:left" border = "1">
+				<tr class="title">
+					<th colspan='3' class="cell">Searched items
+				</tr>	
+				<tr class="subTitle">
+					<th class="cell">ID
+					<th class="cell">Name
+					<th class="cell">Price
+				</tr>
+				<tbody id="searchedItemsBody"/>
+			</table>
+		</fieldset>
+		<fieldset id="visualizedItemField" style="padding:0;border:0;visibility:hidden;display:inline">	
+			<table id="visualizedItemTable" style="border-collapse:collapse;float:left" border = "1">
+				<tr class="title">
+					<th colspan='6' class="cell">Item
+				</tr>
+				<tbody>
+					<tr class="subTitle">
+						<th class="cell">ID
+						<th class="cell">Name
+						<th class="cell">Description
+						<th class="cell">Category
+						<th class="cell">Image
+						<th class="cell">Price
+					</tr>
+				</tbody>	
+				<tbody id="visualizedItemBody"/>
+			</table>
+			<table id="visualizedSuppliersTable" style="border-collapse:collapse;float:left" border = "1">
+				<tr class="title">
+					<th colspan='3' class="cell">Supplier
+				</tr>
+				<tbody>
+					<tr class="subTitle">
+						<th class="cell">Name
+						<th class="cell">Score
+						<th class="cell">Threshold
+					</tr>
+				</tbody>	
+				<tbody id="visualizedSuppliersBody"/>
+			</table>
+			<table id="visualizedSpendingRangeTable" style="border-collapse:collapse;float:left" border = "1">
+				<tr class="title">
+					<th colspan='2' class="cell">SpendingRange
+				</tr>
+				<tbody>
+					<tr class="subTitle">
+						<th class="cell">Range
+						<th class="cell">Cost
+					</tr>
+				</tbody>	
+				<tbody id="visualizedSpendingRangeBody"/>
+			</table>
+			<table id="visualizedCartTable" style="border-collapse:collapse;float:left" border = "1">
+				<tr class="title">
+					<th colspan='2' class="cell">Cart
+				</tr>
+				<tbody>
+					<tr class="subTitle">
+						<th class="cell">Items
+						<th class="cell">Cost
+					</tr>
+				</tbody>	
+				<tbody id="visualizedCartBody"/>
+			</table>
+			<table id="orderTable" style="border-collapse:collapse;float:left" border = "1">
+				<tr class="title">
+					<th class="cell">Order
+				</tr>
+				<tbody>
+					<tr class="subTitle">
+						<th class="cell">Quantity
+					</tr>
+				</tbody>	
+				<tbody id="orderBody" />
+			</table>	
+		</fieldset>	
+	</fieldset>	
+	<h2 id="cartMessage" style="visibility:hidden;position:absolute;top:85px;left:10px">This is your cart</h2>
+	<fieldset id="cartField" style="float:left;padding:0;border:0;visibility:hidden;position:absolute;left:10px;top:150px">
+		<table id="cartItemTable" style="border-collapse:collapse;float:left" border = "1">
+			<tr class="title">
+				<th colspan='3' class="cell">Item</th>
+			</tr>
+			<tbody>
+				<tr class="subTitle">
+					<th class="cell">Name
+					<th class="cell">Amount
+					<th class="cell">Price
+				</tr>
+			</tbody>
+			<tbody id="cartItemsBody">
+		</table>
+		<table id="cartSuppliersTable" border = "1" style="border-collapse:collapse;float:left">
+			<tr class="title">
+				<th class="cell">Supplier
+			</tr>
+			<tbody>
+				<tr class="subTitle">
+					<th class="cell">Name
+				</tr>
+			</tbody>
+			<tbody id ="cartSuppliersBody">
+		</table>
+		<table id="cartCostsTable" border = "1" style="border-collapse:collapse;float:left">
+			<tr class="title">
+				<th colspan='4' class="cell">Cost
+			</tr>
+			<tbody>
+				<tr class="subTitle">
+					<th class="cell">Net
+					<th class="cell">Shipment
+					<th class="cell">Total
+					<th class="cell">Order
+				</tr>
+			</tbody>
+			<tbody id="cartCostsBody">
+		</table>	
+	</fieldset>		
+	<h2 id="ordersMessage" style="visibility:hidden;position:absolute;top:85px;left:10px">List of your orders</h2>
+	<fieldset id="ordersField" style="float:left;padding:0;border:0;visibility:hidden;position:absolute;left:10px;top:150px">
+		<table id="ordersTable" style="border-collapse:collapse;float:left" border = "1">
+			<tr class="title">
+					<th class="cell">Order
+				</tr>
+				<tbody>
+					<tr class="subTitle">
+						<th class="cell">ID
+					</tr>
+				</tbody>
+			<tbody id="ordersBody">
+		</table>
+		<table id="orderItemsTable" border = "1" style="border-collapse:collapse;float:left">
+			<tr class="title">
+					<th colspan='2' class="cell">Item
+				</tr>
+				<tbody>
+					<tr class="subTitle">
+						<th class="cell">Name
+						<th class="cell">Amount
+					</tr>
+				</tbody>
+			<tbody id ="orderItemsBody">
+		</table>
+		<table id="orderSuppliersTable" border = "1" style="border-collapse:collapse;float:left">
+			<tr class="title">
+					<th class="cell">Supplier
+					<th colspan='3' class="cell">Cost
+					<th colspan='2' class="cell">User
+				</tr>
+				<tbody>
+					<tr class="subTitle">
+						<th class="cell">Name
+						<th class="cell">Net
+						<th class="cell">Shipment
+						<th class="cell">Total
+						<th class="cell">Date
+						<th class="cell">Address
+					</tr>
+				</tbody>
+			<tbody id="orderSuppliersBody">
+		</table>	
+	</fieldset>	
+	<table id="cartDetailsTable" style="border-collapse:collapse;visibility:hidden;background-color:bisque;" border = "1">
+		<tr class="subTitle">
+			<th class="cell">ID
+			<th class="cell">Name
+			<th class="cell">Amount
+			<th class="cell">Price
+		</tr>	
+		<tbody id="cartDetailsBody"/>
+	</table>	
+</body>
+</html>

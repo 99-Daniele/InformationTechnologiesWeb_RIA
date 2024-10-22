@@ -1,0 +1,18 @@
+.title{
+	background-color: chartreuse;
+}
+.subTitle{
+	background-color: greenyellow;
+}
+.cell {
+	text-align: center;
+	height: 1em;
+	padding: 0.5em;
+}
+.logout {
+	text-align: right;
+	margin-right: 50px;
+}
+.clickable{
+	cursor:pointer;
+}
